@@ -3,11 +3,11 @@ public class AircraftFactory {
         Coordinates coordinates = new Coordinates(longitude, latitude, height);
         switch (type.toLowerCase()) {
             case "helicopter":
-                return new Helicopter(name, coordinates);
+                return new Helicopter(name, type, coordinates);
             case "jetplane":
-                return new Helicopter(name, coordinates);
+                return new Helicopter(name, type, coordinates);
             case "baloon":
-                return new Helicopter(name, coordinates);
+                return new Helicopter(name, type, coordinates);
         }
         return null;
     }

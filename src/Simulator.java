@@ -30,7 +30,6 @@ public class Simulator {
 
         while (numberOfSimulation != 0) {
             weatherTower.changeWeather();
-            System.out.println("change");
             numberOfSimulation--;
         }
     }
