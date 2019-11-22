@@ -1,10 +1,20 @@
 public class WeatherTower extends Tower {
-    public String getWeather(Coordinates coordinates) {
-        //System.out.println(WeatherProvider.getProvider().getCurrentWeather(coordinates));
-        return WeatherProvider.getProvider().getCurrentWeather(coordinates);
+    private WeatherProvider weatherProvider;
+
+    public WeatherTower(WeatherProvider weatherProvider) {
+        this.weatherProvider = weatherProvider;
     }
 
-    public void changeWeather() {
+    public String getWeather(Coordinates coordinates) {
+        return weatherProvider.getCurrentWeather(coordinates);
+    }
+
+    public void changeWeather() throws Exception {
         super.conditionsChanged();
+    }
+
+    @Override
+    protected void registerSpecificTower(Flyable flyable) {
+        flyable.registerTower(this);
     }
 }

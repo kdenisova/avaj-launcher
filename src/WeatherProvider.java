@@ -5,12 +5,13 @@ public class WeatherProvider {
     private static String[] weather = {"RAIN", "FOG", "SUN", "SNOW"};
 
     private WeatherProvider() {
-
     }
 
     public static WeatherProvider getProvider() {
-        if (weatherProvider == null)
+        if (weatherProvider == null) {
             weatherProvider = new WeatherProvider();
+        }
+
         return weatherProvider;
     }
 
@@ -18,5 +19,4 @@ public class WeatherProvider {
         int currentWeather = coordinates.getLongitude() + coordinates.getLatitude() + coordinates.getHeight();
         return weather[currentWeather % 4];
     }
-
 }

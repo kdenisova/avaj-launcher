@@ -4,10 +4,10 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        List<String> scenario = new ArrayList<String>();
+        List<String> scenario = new ArrayList<>();
         if (args.length <= 0) {
             System.out.println("usage: [file name]");
-            return ;
+            return;
         }
 
         try {
@@ -19,16 +19,16 @@ public class Main {
             }
 
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             e.printStackTrace();
         }
 
         Simulator simulator = new Simulator(scenario);
-        simulator.Simulation();
-
-//        for (String item: scenario) {
-//            System.out.println(item);
-//        }
-
-
+        try {
+            simulator.Simulation();
+        } catch (Exception e) {
+            System.out.println("Simulation failed because of: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 }

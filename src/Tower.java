@@ -1,26 +1,38 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Tower {
-    private ArrayList<Flyable> observers;
+    protected ArrayList<Flyable> observers;
 
     public Tower() {
         observers = new ArrayList<Flyable>();
     }
 
-    public void register(Flyable flyable) {
-//        if (flyable == null)
-//            return ;
+    public void register(Flyable flyable) throws Exception {
+        if (flyable == null) {
+            throw new Exception("cannot register <null> flyable.");
+        }
+
         observers.add(flyable);
+        registerSpecificTower(flyable);
     }
 
-    public void unregister(Flyable flyable) {
+    protected void registerSpecificTower(Flyable flyable){
+    }
+
+    public void unregister(Flyable flyable) throws Exception {
+        if (flyable == null) {
+            throw new Exception("cannot register <null> flyable.");
+        }
+
         observers.remove(flyable);
-        //System.out.println("Tower says: " + flyable. + "#" + flyable "(" + this.id + ") unregistered from weather tower.");
     }
 
-    protected void conditionsChanged() {
-        for (int i = 0; i < observers.size(); i++) {
-            observers.get(i).updateConditions();
+    protected void conditionsChanged() throws Exception {
+        List<Flyable> copy = new ArrayList<>(observers);
+
+        for (Flyable flyable : copy) {
+            flyable.updateConditions();
         }
     }
 }

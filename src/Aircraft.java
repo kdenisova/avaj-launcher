@@ -1,11 +1,13 @@
-public class Aircraft {
+public abstract class Aircraft {
+    private AircraftType type;
+
     protected long id;
     protected String name;
-    protected String type;
     protected Coordinates coordinates;
+
     private static long idCounter = 0;
     
-    protected Aircraft(String name, String type, Coordinates coordinates) {
+    protected Aircraft(String name, AircraftType type, Coordinates coordinates) {
        this.name = name;
        this.type = type;
        this.coordinates = coordinates;
@@ -35,12 +37,16 @@ public class Aircraft {
     public void changeHeight(int height) {
         if (checkTooLow(coordinates.getHeight() + height)) {
             this.coordinates = new Coordinates(coordinates.getLongitude(), coordinates.getLatitude(), 0);
-            System.out.println(this.type + "#" + this.name + "(" + this.id + ") landing");
+            System.out.println(this.getType() + "#" + this.name + "(" + this.id + ") landing");
         } else if (checkTooHigh(coordinates.getHeight() + height)) {
             this.coordinates = new Coordinates(coordinates.getLongitude(), coordinates.getLatitude(), 100);
         }
         else
             this.coordinates = new Coordinates(coordinates.getLongitude(), coordinates.getLatitude(), coordinates.getHeight() + height);
+    }
+
+    protected AircraftType getType() {
+        return type;
     }
 
 //    public long getId() {
