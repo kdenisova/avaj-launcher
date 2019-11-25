@@ -6,9 +6,9 @@ public class AircraftFactory {
             case Helicopter:
                 return new Helicopter(name, coordinates);
             case JetPlane:
-                return new Helicopter(name, coordinates);
+                return new JetPlane(name, coordinates);
             case Baloon:
-                return new Helicopter(name, coordinates);
+                return new Baloon(name, coordinates);
         }
 
         throw new Exception(String.format("unknown aircraft type: %s.", type));
