@@ -1,5 +1,5 @@
-public class AircraftFactory {
-    public Flyable newAircraft(AircraftType type, String name, int longitude, int latitude, int height) throws Exception {
+public abstract class AircraftFactory {
+    public static Flyable newAircraft(AircraftType type, String name, int longitude, int latitude, int height) throws Exception {
         Coordinates coordinates = new Coordinates(longitude, latitude, height);
 
         switch (type) {
@@ -11,6 +11,6 @@ public class AircraftFactory {
                 return new Baloon(name, coordinates);
         }
 
-        throw new Exception(String.format("unknown aircraft type: %s.", type));
+        throw new AvajLauncherException("Unknown aircraft type: " + type);
     }
 }

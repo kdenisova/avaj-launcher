@@ -11,28 +11,42 @@ public class Simulator {
         int numberOfSimulation = 0;
         int i = 0;
 
-        AircraftFactory factory = new AircraftFactory();
+        //AircraftFactory factory = new AircraftFactory();
         Flyable flyable;
         WeatherTower weatherTower = new WeatherTower(WeatherProvider.getProvider());
 
         for (String item: scenario) {
             if (i == 0) {
                 i = 1;
-                numberOfSimulation = Integer.parseInt(item);
+                try {
+                    numberOfSimulation = Integer.parseInt(item);
+                } catch (NumberFormatException e) {
+                    throw new AvajLauncherException("Wrong format of Number of Simulation: " + e.getMessage());
+                }
             }
             else {
                 String[] result = item.split(" ");
 
-                flyable = factory.newAircraft(
-                        AircraftType.valueOf(result[0]),
-                        result[1],
-                        Integer.parseInt(result[2]),
-                        Integer.parseInt(result[3]),
-                        Integer.parseInt(result[4]));
+                try {
+
+                    flyable = AircraftFactory.newAircraft(
+                            AircraftType.valueOf(result[0]),
+                            result[1],
+                            Integer.parseInt(result[2]),
+                            Integer.parseInt(result[3]),
+                            Integer.parseInt(result[4]));
+
+                    weatherTower.register(flyable);
+                } catch (NumberFormatException e) {
+                    throw new AvajLauncherException("Wrong coordinate type: " + e.getMessage());
+                } catch (Exception e) {
+                    throw new AvajLauncherException(("Unknown aircraft type: " + result[0]));
+                }
+
 
                 //flyable.registerTower(weatherTower);
 
-                weatherTower.register(flyable);
+
             }
         }
 

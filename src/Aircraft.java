@@ -6,7 +6,7 @@ public abstract class Aircraft {
     protected Coordinates coordinates;
 
     private static long idCounter = 0;
-    
+
     protected Aircraft(String name, AircraftType type, Coordinates coordinates) {
        this.name = name;
        this.type = type;
