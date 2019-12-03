@@ -24,7 +24,7 @@ public class Simulator {
     }
 
     public void Simulation() throws Exception {
-        int numberOfSimulation = 0;
+        int numberOfSimulation;
 
         Flyable flyable;
         WeatherTower weatherTower = new WeatherTower(WeatherProvider.getProvider());

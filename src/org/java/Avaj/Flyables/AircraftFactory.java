@@ -1,6 +1,6 @@
 package org.java.Avaj.Flyables;
 
-import org.java.Avaj.*;//AvajLauncherException;
+import org.java.Avaj.*;
 
 public abstract class AircraftFactory {
     public static Flyable newAircraft(AircraftType type, String name, int longitude, int latitude, int height) throws Exception {
