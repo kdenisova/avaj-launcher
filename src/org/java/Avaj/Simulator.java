@@ -25,9 +25,7 @@ public class Simulator {
 
     public void Simulation() throws Exception {
         int numberOfSimulation = 0;
-        int i = 0;
 
-        //AircraftFactory factory = new AircraftFactory();
         Flyable flyable;
         WeatherTower weatherTower = new WeatherTower(WeatherProvider.getProvider());
 
@@ -43,7 +41,7 @@ public class Simulator {
             String[] result = item.split(" ");
             String rawAircraftType = result[0];
 
-            if (rawAircraftType.length() == 32) {
+            if (ifMD5(rawAircraftType)) {
                 // MD5 case
                 aircraftType = availableAircraftHashMap.get(rawAircraftType);
                 if (aircraftType == null) {
@@ -51,7 +49,11 @@ public class Simulator {
                 }
             } else {
                 // Plain text case
-                aircraftType = AircraftType.valueOf(rawAircraftType);
+                try {
+                    aircraftType = AircraftType.valueOf(rawAircraftType);
+                } catch (IllegalArgumentException e) {
+                    throw new AvajLauncherException(("Unknown aircraft type: " + rawAircraftType));
+                }
             }
 
             try {
@@ -73,6 +75,18 @@ public class Simulator {
         }
     }
 
+    private boolean ifMD5(String input) {
+        if (input.length() != 32)
+            return false;
+
+        for (char c: input.toCharArray()) {
+            if (!(c >= '0' && c <= '9') && !(c >= 'a' && c <= 'f'))
+                return false;
+        }
+
+        return true;
+    }
+
     private static String getMD5(String input) throws NoSuchAlgorithmException {
         MessageDigest messageDigest = MessageDigest.getInstance("MD5");
 
@@ -85,6 +99,7 @@ public class Simulator {
         while (hash.length() < 32) {
             hash = "0" + hash;
         }
+
         return (hash);
     }
 }

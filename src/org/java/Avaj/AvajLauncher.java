@@ -8,12 +8,10 @@ public class AvajLauncher {
     public static void main(String[] args) throws AvajLauncherException {
         AvajLauncher m = new AvajLauncher();
 
-        //m.changeStream();
-
         List<String> scenario = new ArrayList<>();
-        if (args.length <= 0) {
-            System.out.println("usage: [file name]");
-            return;
+        if (args.length == 0) {
+            System.out.println("usage: java -cp bin org.java.Avaj.AvajLauncher [file name]");
+            System.exit(1);
         }
 
         try {
@@ -24,11 +22,13 @@ public class AvajLauncher {
                 scenario.add(line);
             }
 
-        } catch (Exception e) {
+        }  catch (Exception e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
+            System.exit(1);
         }
 
+        m.changeStream();
 
         try {
             Simulator simulator = new Simulator(scenario);
@@ -36,8 +36,6 @@ public class AvajLauncher {
         } catch (Exception e) {
             e.printStackTrace();
             throw new AvajLauncherException("Simulation failed because of: " + e.getMessage());
-           // System.out.println("Simulation failed because of: " + e.getMessage());
-            //e.printStackTrace();
         }
     }
 
