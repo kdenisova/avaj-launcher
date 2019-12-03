@@ -1,16 +1,17 @@
+package org.java.Avaj;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Main {
+public class AvajLauncher {
     public static void main(String[] args) throws AvajLauncherException {
-        Main m = new Main();
-        m.changeStream();
+        AvajLauncher m = new AvajLauncher();
 
         List<String> scenario = new ArrayList<>();
-        if (args.length <= 0) {
-            System.out.println("usage: [file name]");
-            return;
+        if (args.length == 0) {
+            System.out.println("usage: java -cp bin org.java.Avaj.AvajLauncher [file name]");
+            System.exit(1);
         }
 
         try {
@@ -21,18 +22,20 @@ public class Main {
                 scenario.add(line);
             }
 
-        } catch (Exception e) {
+        }  catch (Exception e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
+            System.exit(1);
         }
 
-        Simulator simulator = new Simulator(scenario);
+        m.changeStream();
+
         try {
+            Simulator simulator = new Simulator(scenario);
             simulator.Simulation();
         } catch (Exception e) {
+            e.printStackTrace();
             throw new AvajLauncherException("Simulation failed because of: " + e.getMessage());
-           // System.out.println("Simulation failed because of: " + e.getMessage());
-            //e.printStackTrace();
         }
     }
 

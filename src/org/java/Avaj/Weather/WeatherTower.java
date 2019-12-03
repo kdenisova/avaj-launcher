@@ -1,3 +1,7 @@
+package org.java.Avaj.Weather;
+
+import org.java.Avaj.Flyables.*;
+
 public class WeatherTower extends Tower {
     private WeatherProvider weatherProvider;
 

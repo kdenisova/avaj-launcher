@@ -1,3 +1,5 @@
+package org.java.Avaj;
+
 public class AvajLauncherException extends Exception {
     private String errorMessage;
 
