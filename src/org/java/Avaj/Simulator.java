@@ -11,14 +11,10 @@ public class Simulator {
     private List<String> scenario;
     private Map<String, AircraftType> availableAircraftHashMap = new HashMap<>();
 
-    public Simulator() throws NoSuchAlgorithmException {
+    Simulator(List<String> scenario) throws NoSuchAlgorithmException {
         for (AircraftType type : AircraftType.values()) {
             availableAircraftHashMap.put(getMD5(type.toString()), type);
         }
-    }
-
-    public Simulator(List<String> scenario) throws NoSuchAlgorithmException {
-        this();
 
         this.scenario = scenario;
     }
