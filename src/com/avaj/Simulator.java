@@ -71,7 +71,10 @@ public class Simulator {
                         height);
 
                 weatherTower.register(flyable);
-            } catch (NumberFormatException e) {
+            } catch (ArrayIndexOutOfBoundsException e) {
+                throw new AvajLauncherException("Missing value in input file: " + e.getMessage());
+            }
+            catch (NumberFormatException e) {
                 throw new AvajLauncherException("Wrong coordinate type: " + e.getMessage());
             }
         }
