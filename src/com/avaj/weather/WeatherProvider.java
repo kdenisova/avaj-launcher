@@ -1,6 +1,6 @@
-package org.java.Avaj.Weather;
+package com.avaj.weather;
 
-import org.java.Avaj.Flyables.Coordinates;
+import com.avaj.flyables.Coordinates;
 
 public class WeatherProvider {
     private static WeatherProvider weatherProvider;

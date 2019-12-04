@@ -1,4 +1,4 @@
-package org.java.Avaj.Flyables;
+package com.avaj.flyables;
 
 public class Coordinates {
     private int longitude;

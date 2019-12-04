@@ -1,6 +1,6 @@
-package org.java.Avaj.Flyables;
+package com.avaj.flyables;
 
-import org.java.Avaj.Weather.WeatherTower;
+import com.avaj.weather.WeatherTower;
 
 public interface Flyable {
     void updateConditions() throws Exception;

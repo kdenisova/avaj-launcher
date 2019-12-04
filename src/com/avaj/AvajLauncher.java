@@ -1,4 +1,4 @@
-package org.java.Avaj;
+package com.avaj;
 
 import java.io.*;
 import java.util.ArrayList;

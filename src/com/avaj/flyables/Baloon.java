@@ -1,6 +1,6 @@
-package org.java.Avaj.Flyables;
+package com.avaj.flyables;
 
-import org.java.Avaj.Weather.*;
+import com.avaj.weather.WeatherTower;
 
 public class Baloon extends Aircraft implements Flyable {
 

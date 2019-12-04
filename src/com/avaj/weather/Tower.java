@@ -1,6 +1,6 @@
-package org.java.Avaj.Weather;
+package com.avaj.weather;
 
-import org.java.Avaj.Flyables.Flyable;
+import com.avaj.flyables.Flyable;
 
 import java.util.ArrayList;
 import java.util.List;

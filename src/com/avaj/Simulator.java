@@ -1,7 +1,10 @@
-package org.java.Avaj;
+package com.avaj;
 
-import org.java.Avaj.Flyables.*;
-import org.java.Avaj.Weather.*;
+import com.avaj.flyables.AircraftFactory;
+import com.avaj.flyables.AircraftType;
+import com.avaj.flyables.Flyable;
+import com.avaj.weather.WeatherProvider;
+import com.avaj.weather.WeatherTower;
 
 import java.math.BigInteger;
 import java.security.*;
@@ -21,6 +24,7 @@ public class Simulator {
 
     public void Simulation() throws Exception {
         int numberOfSimulation;
+        int height, longitude, latitude;
 
         Flyable flyable;
         WeatherTower weatherTower = new WeatherTower(WeatherProvider.getProvider());
@@ -41,24 +45,30 @@ public class Simulator {
                 // MD5 case
                 aircraftType = availableAircraftHashMap.get(rawAircraftType);
                 if (aircraftType == null) {
-                    throw new AvajLauncherException(("Unknown aircraft type: " + rawAircraftType));
+                    throw new AvajLauncherException("Unknown aircraft type: " + rawAircraftType);
                 }
             } else {
                 // Plain text case
                 try {
                     aircraftType = AircraftType.valueOf(rawAircraftType);
                 } catch (IllegalArgumentException e) {
-                    throw new AvajLauncherException(("Unknown aircraft type: " + rawAircraftType));
+                    throw new AvajLauncherException("Unknown aircraft type: " + rawAircraftType);
                 }
             }
 
             try {
+                longitude = Integer.parseInt(result[2]);
+                latitude = Integer.parseInt(result[3]);
+                height = Integer.parseInt(result[4]);
+
+                if (longitude <= 0 || latitude <= 0 || height <= 0)
+                    throw new AvajLauncherException("Coordinates should be are positive numbers");
                 flyable = AircraftFactory.newAircraft(
                         aircraftType,
                         result[1],
-                        Integer.parseInt(result[2]),
-                        Integer.parseInt(result[3]),
-                        Integer.parseInt(result[4]));
+                        longitude,
+                        latitude,
+                        height);
 
                 weatherTower.register(flyable);
             } catch (NumberFormatException e) {
