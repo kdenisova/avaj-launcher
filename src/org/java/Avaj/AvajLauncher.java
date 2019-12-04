@@ -10,7 +10,7 @@ public class AvajLauncher {
 
         List<String> scenario = new ArrayList<>();
         if (args.length == 0) {
-            System.out.println("usage: java -cp bin org.java.Avaj.AvajLauncher [file name]");
+            System.out.println("usage: org.java.Avaj.AvajLauncher [file name]");
             System.exit(1);
         }
 
