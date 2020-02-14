@@ -1,7 +1,6 @@
 # Avaj Launcher
-This project is the introduction to the Java world at 42
-
-This project was the last Rush of the CPP Piscine at [42 Silicon Valley](https://www.42.us.org). The goal was to implement a simple analogue of the [GKrellM](https://en.wikipedia.org/wiki/GKrellM) over the weekend.
+This project is the introduction to the Java world at [42 Silicon Valley](https://www.42.us.org). The goal was to implement an aircraft simulation program based on the provided UML class diagram. 
+![alt text](https://github.com/kdenisova/Screenshots/blob/master/avaj_uml.jpg)
 
 The system monitor can display information about the following modules in the real time:
 
