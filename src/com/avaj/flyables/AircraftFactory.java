@@ -11,8 +11,8 @@ public abstract class AircraftFactory {
                     return new Helicopter(name, coordinates);
                 case JetPlane:
                     return new JetPlane(name, coordinates);
-                case Baloon:
-                    return new Baloon(name, coordinates);
+                case Balloon:
+                    return new Balloon(name, coordinates);
             }
 
         throw new AvajLauncherException("Unknown aircraft type: " + type);
