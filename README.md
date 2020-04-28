@@ -4,7 +4,7 @@ This project is the introduction to the Java world at [42 Silicon Valley](https:
 
 
 ## Program behavior
-The program takes one argument from the command line. This argument represents the name of a text file that will contain the scenario that needs to be simulated. Executing the program will generate a file simulation.txt that describes the outcome of the simulation.
+The program takes one argument from the command line. This argument represents the name of a text file that will contain the scenario that needs to be simulated. Executing the program will generate a file `simulation.txt` that describes the outcome of the simulation.
 
 ## Simulation file
 The first line of the scenario file contains a positive integer number. This number represents the number of times a weather change is triggered. Each following line describes an aircraft that will be part of the simulation, with this format: 
@@ -33,6 +33,7 @@ Each aircraft has its own behavior when changing weather conditions.
 * Each time an aircraft is created, it receives a unique ID. There can’t be 2 aircrafts with the same ID.
 * If an aircraft reaches height 0 or needs to go below it, the aircraft lands, unregisters from the weather tower and logs its current coordinates.
 * When a weather change occurs, each aircraft type needs to log a message. 
+
 The message format is:
 
      TYPE#NAME(UNIQUE_ID): SPECIFIC_MESSAGE
@@ -51,12 +52,18 @@ The message format is:
 1. Build
 
      `find . -name "*.java" > sources.txt`
-     `javac -d bin -sourcepath com.avaj.AvajLauncher.java @sources.txt`
+     `javac -d bin -sourcepath src/com/avaj/AvajLauncher.java @sources.txt`
 
 2. Launch
 
-     `LD_LIBRARY_PATH=~/.brew/Cellar/sfml/2.5.1/lib ./ft_gkrellm [-tg]`
+     `java -cp bin com.avaj.AvajLauncher [scenario.txt]`
 
 ## Screenshots
 
-![alt text](https://github.com/kdenisova/Screenshots/)
+Example of scenario file:
+
+![alt text](https://github.com/kdenisova/avaj-launcher/screenshots/scenario)
+
+Example of result of simulation:
+![alt text](https://github.com/kdenisova/avaj-launcher/screenshots/simulation)
+
