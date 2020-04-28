@@ -61,8 +61,10 @@ Each aircraft has its own behavior when changing weather conditions.
 
 Example of scenario file:
 
-![alt text](https://github.com/kdenisova/avaj-launcher/tree/master/screenshots/scenario.jpeg)
+![alt text](https://github.com/kdenisova/Screenshots/blob/master/scenario.jpeg)
 
 Example of result of simulation:
-![alt text](https://github.com/kdenisova/avaj-launcher/tree/master/screenshots/simulation.jpeg)
+
+
+![alt text](https://github.com/kdenisova/Screenshots/blob/master/simulation.jpeg)
 
