@@ -9,7 +9,7 @@ The program takes one argument from the command line. This argument represents t
 ## Simulation file
 The first line of the scenario file contains a positive integer number. This number represents the number of times a weather change is triggered. Each following line describes an aircraft that will be part of the simulation, with this format: 
      
-     `TYPE NAME LONGITUDE LATITUDE HEIGHT`
+     TYPE NAME LONGITUDE LATITUDE HEIGHT
 
 ## Weather generation
 There are 4 types of weather:
