@@ -2,46 +2,61 @@
 This project is the introduction to the Java world at [42 Silicon Valley](https://www.42.us.org). The goal was to implement an aircraft simulation program based on the provided UML class diagram. 
 ![alt text](https://github.com/kdenisova/Screenshots/blob/master/avaj_uml.jpg)
 
-The system monitor can display information about the following modules in the real time:
 
-* Hostname/username module
-* OS info module
-* Date/Time module
-* CPU module
-* RAM module
-* Network module
-* Disks module
+## Program behavior
+The program takes one argument from the command line. This argument represents the name of a text file that will contain the scenario that needs to be simulated. Executing the program will generate a file simulation.txt that describes the outcome of the simulation.
 
-Ft_GKrellM works in two different modes:
+## Simulation file
+The first line of the scenario file contains a positive integer number. This number represents the number of times a weather change is triggered. Each following line describes an aircraft that will be part of the simulation, with this format: 
+     
+     TYPE NAME LONGITUDE LATITUDE HEIGHT
 
-     -t: text (or terminal) mode
+## Weather generation
+There are 4 types of weather:
+* RAIN 
+* FOG
+* SUN
+* SNOW
 
-     -g: graphical mode
+## Aircrafts
+There are 3 types of aircraft:
+* JetPlane 
+* Helicopter
+* Balloon
 
-## Interface
+Each aircraft has its own behavior when changing weather conditions.
 
-* Terminal mode using [NCURSES](https://en.wikipedia.org/wiki/Ncurses)
-* GUI mode using [SFML](https://en.wikipedia.org/wiki/Simple_and_Fast_Multimedia_Library)
+## Simulation
+* Coordinates are positive numbers.
+* The height is in the 0-100 range.
+* If an aircraft needs to pass the upper limit height it remains at 100.
+* Each time an aircraft is created, it receives a unique ID. There can’t be 2 aircrafts with the same ID.
+* If an aircraft reaches height 0 or needs to go below it, the aircraft lands, unregisters from the weather tower and logs its current coordinates.
+* When a weather change occurs, each aircraft type needs to log a message. 
+The message format is:
+
+     TYPE#NAME(UNIQUE_ID): SPECIFIC_MESSAGE
+
+• Each time an aircraft registers or unregisters to/from the weather tower, a message will be logged.
+
+## Implemented design patterns
+
+* [Singleton](https://refactoring.guru/design-patterns/singleton)
+* [Observer](https://refactoring.guru/design-patterns/observer)
+* [Abstract Factory](https://refactoring.guru/design-patterns/abstract-factory)
 
 
 ## How to use?
 
-1. Install SFML
+1. Build
 
-     `brew install sfml`
+     `find . -name "*.java" > sources.txt`
+     `javac -d bin -sourcepath com.avaj.AvajLauncher.java @sources.txt`
 
-2. Build
-
-     `make`
-
-3. Configure
-
-     `Set + for necessary modules at`[config](https://github.com/kdenisova/ft_gkrellm/blob/master/config)`file`
-
-4. Launch
+2. Launch
 
      `LD_LIBRARY_PATH=~/.brew/Cellar/sfml/2.5.1/lib ./ft_gkrellm [-tg]`
 
 ## Screenshots
 
-![alt text](https://github.com/kdenisova/Screenshots/blob/master/Modes.png)
+![alt text](https://github.com/kdenisova/Screenshots/)
